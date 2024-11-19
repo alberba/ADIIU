@@ -14,7 +14,7 @@ function buscarPelicula(event) {
     "https://api.themoviedb.org/3/search/movie?include_adult=false&language=es-ES&page=1&query=" +
       nombrePelicula +
       "&api_key=89189a800c1bb9ba924a9573efd695af",
-    options
+    options,
   )
     .then((res) => res.json())
     .then((res) => {
