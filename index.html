@@ -4,82 +4,115 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>IMDB Data Dashboard</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="Chart.js"></script>
     <script src="api.js"></script>
   </head>
-  <body>
-    <header>
-      <nav class="flex items-center justify-between bg-gray-100 px-4 py-2">
-        <a class="py-2 text-xl" href="#">IMDB Data Dashboard</a>
-        <div class="flex gap-3 text-gray-600">
-          <a href="https://www.uib.cat/" class="hover:text-gray-900">UIB</a>
+  <body class="bg-gray-200">
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg">
+      <nav
+        class="mx-auto flex max-w-screen-xl items-center justify-between px-12 py-4 lg:px-6"
+      >
+        <a
+          class="text-2xl font-semibold text-white transition duration-300 hover:text-gray-200"
+          href="#"
+          >IMDB Data Dashboard</a
+        >
+
+        <div class="flex gap-6 text-white">
+          <a
+            href="https://www.uib.cat/"
+            class="transition duration-300 hover:text-gray-200"
+            >UIB</a
+          >
           <a
             href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows"
-            class="hover:text-gray-900"
+            class="transition duration-300 hover:text-gray-200"
             >Data Source</a
           >
         </div>
       </nav>
     </header>
-    <main class="mx-4 grid grid-cols-12 gap-6">
-      <section id="grafico1" class="col-span-5"></section>
-      <section id="chartPie" class="col-span-5"></section>
-      <section class="col-span-5 mb-6 flex flex-col rounded border px-4">
-        <form class="my-5" onsubmit="buscarPelicula(event)">
-          <div class="relative">
-            <div
-              class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
-            >
-              <svg
-                class="h-4 w-4 text-gray-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                />
-              </svg>
-            </div>
-            <input
-              type="search"
-              id="nombre_pelicula"
-              class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-              placeholder="Buscar película"
-              required
-            />
-            <button
-              type="submit"
-              class="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
-            >
-              Buscar
-            </button>
-          </div>
-        </form>
 
-        <article class="">
-          <img src="" alt="" class="float-left mr-4 w-32" id="img_pelicula" />
-          <div>
-            <h3 id="titulo_pelicula" class="text-xl font-bold"></h3>
-            <p id="pelicula_year" class="text-lg"></p>
-            <p id="descripcion_pelicula" class="my-6 text-justify"></p>
-          </div>
-        </article>
-      </section>
-      <section class="col-span-5">
-        <img
-          src="https://imgs.search.brave.com/t9hPNHEHyVw8LXlOziQFJeMRSXbNYnVv33PtFTU9n94/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9lcy53/ZWIuaW1nMy5hY3N0/YS5uZXQvY18zMDBf/MzAwL21lZGlhcy9u/bWVkaWEvMTgvNzAv/MTcvNDYvMjAwODY0/ODkuanBn"
-          alt="IMDB Data Dashboard"
-        />
-      </section>
+    <main class="mx-12 mb-8 grid grid-cols-10 lg:mx-6 lg:grid-cols-12">
+      <div class="col-span-10 mt-4 grid grid-cols-5 gap-6 lg:grid-cols-10">
+        <section
+          id="grafico1"
+          class="col-span-5 aspect-[15/13] rounded border border-gray-400 bg-white p-3"
+        ></section>
+        <section
+          id="chartPie"
+          class="col-span-5 aspect-[15/13] rounded border border-gray-400 bg-white p-3"
+        ></section>
+        <section
+          class="col-span-5 flex aspect-[15/13] flex-col overflow-hidden text-ellipsis rounded border border-gray-400 bg-white px-4"
+        >
+          <form class="my-5" onsubmit="buscarPelicula(event)">
+            <div class="relative">
+              <div
+                class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3"
+              >
+                <svg
+                  class="h-4 w-4 text-gray-500"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="search"
+                id="nombre_pelicula"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                placeholder="Buscar película"
+                required
+              />
+              <button
+                type="submit"
+                class="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+              >
+                Buscar
+              </button>
+            </div>
+          </form>
+
+          <article class="flex h-auto flex-col items-center lg:block">
+            <img
+              src=""
+              alt=""
+              class="float-left mr-4 h-auto w-1/5 max-w-44 object-contain lg:w-1/3 lg:max-w-32"
+              id="img_pelicula"
+            />
+            <div class="my-3 flex flex-col items-center lg:my-0 lg:block">
+              <h3 id="titulo_pelicula" class="text-xl font-bold"></h3>
+              <p id="pelicula_year" class="text-lg"></p>
+              <p
+                id="descripcion_pelicula"
+                class="text-ellipsis text-justify lg:my-6"
+              ></p>
+            </div>
+          </article>
+        </section>
+        <section
+          class="col-span-5 aspect-[15/13] rounded border border-gray-400 bg-white p-3"
+          id="grafico3"
+        ></section>
+      </div>
+
+      <div class="col-span-10 flex justify-center pt-8 lg:col-span-2 lg:pt-3">
+        <a href="https://github.com/alberba/ADIIU" class="h-fit max-w-[150px]">
+          <img src="./img/github-logo.svg" alt="Logo de Github" />
+        </a>
+      </div>
     </main>
   </body>
 </html>
