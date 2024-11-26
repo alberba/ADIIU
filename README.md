@@ -1,28 +1,29 @@
 # IMDB Data Dashboard
 
-![Captura de pantalla de la página web](image.png)
+![Captura de pantalla de la página web](./img/screenshot.png)
 
 #### Autores: Ramiro Martins y Albert Salom
 
 Este proyecto es un dashboard interactivo diseñado para visualizar y analizar datos de películas del conjunto de datos de IMDb Top 1000. Incluye gráficos dinámicos, búsquedas de películas específicas a través de la API de TMDB y visualizaciones generadas a partir de datos almacenados en una base de datos MySQL.
 
 ## Data Set
+
 El dataset de IMDb Top 1000 contiene información sobre las 1000 películas mejor valoradas según [IMDb](https://www.imdb.com/). A partir de la base de datos, utilizamos estas variables:
 
-- ***Series_Title***: Nombre de la película.
-- ***Released_Year***: Año de lanzamiento.
-- ***Genre***: Género/s de la película. 
-- ***Gross***: Recaudación de la película en dólares.
+- **_Series_Title_**: Nombre de la película.
+- **_Released_Year_**: Año de lanzamiento.
+- **_Genre_**: Género/s de la película.
+- **_Gross_**: Recaudación de la película en dólares.
 
 La base de datos se encuentra hospedado en un servidor MySQL en local.
 
 ## Integraciones
 
-- ***TailwindCSS***: **Framework de CSS** para el diseño del layout. Hemos decidido utilizar este framework porque estamos más familiarizados con él y creemos que ofrece menos limitaciones en cuanto a personalización.
+- **_TailwindCSS_**: **Framework de CSS** para el diseño del layout. Hemos decidido utilizar este framework porque estamos más familiarizados con él y creemos que ofrece menos limitaciones en cuanto a personalización.
 
-- ***Highcharts***: Librería de gráficos interactivos utilizado en el proyecto. Dentro de *Highcharts*, hemos utilizado el *Bar_Chart*, *Pie_Chart* y *Column_Chart*.
+- **_Highcharts_**: Librería de gráficos interactivos utilizado en el proyecto. Dentro de _Highcharts_, hemos utilizado el _Bar_Chart_, _Pie_Chart_ y _Column_Chart_.
 
-- ***The Movie Database (TMDB) API***: API utilizada para buscar información de películas específicas en tiempo real. La búsqueda se puede realizar tanto con el id de IMDb como con el nombre de la película, ya sea en inglés o en español.
+- **_The Movie Database (TMDB) API_**: API utilizada para buscar información de películas específicas en tiempo real. La búsqueda se puede realizar tanto con el id de IMDb como con el nombre de la película, ya sea en inglés o en español.
 
 ## Gráficos Interactivos
 
@@ -45,13 +46,15 @@ A partir de una pequeña barra de búsqueda, podemos obtener información de cua
 **HTML**: Contiene la estructura básica del dashboard con secciones para los gráficos, el formulario de búsqueda y los resultados.
 
 **JavaScript:**
-- *api.js*: Encargado de hacer la gestión con la API de TMDB.
-- *Chart.js*: Se encarga de gestionar las solicitudes y salidas del php y genera los gráficos a partir de los datos obtenidos.
+
+- _api.js_: Encargado de hacer la gestión con la API de TMDB.
+- _Chart.js_: Se encarga de gestionar las solicitudes y salidas del php y genera los gráficos a partir de los datos obtenidos.
 
 ### Backend
-**PHP**: 
 
-- *database.php*: Encargado de establecer conexión con la base de datos y procesar las consultas SQL para generar los datos de los gráficos en formato *JSON* y enviarlos al frontend.
+**PHP**:
+
+- _database.php_: Encargado de establecer conexión con la base de datos y procesar las consultas SQL para generar los datos de los gráficos en formato _JSON_ y enviarlos al frontend.
 
 **SQL**:
 
@@ -59,7 +62,7 @@ Contiene todos los datos para la creación de la base de datos y la inserción d
 
 ## Accesibilidad
 
-El dashboard es accesible para cualquier usuario, ya que hemos implementado un diseño responsivo y adaptado a cualquier dispositivo. 
+El dashboard es accesible para cualquier usuario, ya que hemos implementado un diseño responsivo y adaptado a cualquier dispositivo.
 
 Por otro lado, el html cuenta con una gran semántica y estructura, que junto con los gráficos Highchart que están preparados para ser accesibles, facilita la navegación a través de lectores de pantalla.
 
