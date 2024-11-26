@@ -1,85 +1,45 @@
-function graficoporDecada() {
-  const xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      const data = JSON.parse(xmlhttp.responseText);
-      const decades = data.map((item) => item.decade);
-      const movie_count = data.map((item) => parseInt(item.movie_count));
-      crearChartBarrasDecada(decades, movie_count);
-    }
-  };
+fetch("database.php?grafico=decadas")
+  .then((response) => response.json())
+  .then((data) => {
+    const decades = data.map((item) => item.decade);
+    const movie_count = data.map((item) => parseInt(item.movie_count));
 
-  xmlhttp.open("GET", "database.php?grafico=decadas", true);
-  xmlhttp.send();
-}
+    crearChartBarrasDecada(decades, movie_count);
+  });
 
-function graficoGeneros() {
-  const xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      const data = JSON.parse(xmlhttp.responseText);
-      crearChartPie(data);
-    }
-  };
+fetch("database.php?grafico=generos")
+  .then((response) => response.json())
+  .then((data) => {
+    crearChartPie(data);
+  });
 
-  xmlhttp.open("GET", "database.php?grafico=generos", true);
-  xmlhttp.send();
-}
+fetch("database.php?grafico=recaudacion")
+  .then((response) => response.json())
+  .then((data) => {
+    const xAxis = [...new Set(data.map((item) => item.primer_genero))];
+    const movieName = data.map((item) => item.Series_Title);
 
-function graficoRecaudacion() {
-  const xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      const data = JSON.parse(xmlhttp.responseText);
-      console.log(data);
-      const xAxis = [...new Set(data.map((item) => item.primer_genero))];
-      const groupedByGenre = data.reduce((acc, item) => {
-        const genre = item.primer_genero;
-        if (!acc[genre]) {
-          acc[genre] = [];
-        }
-        acc[genre].push(item);
-        return acc;
-      }, {});
+    const groupedByGenre = {};
 
-      // Construir arraySeriesY
-      const arraySeriesY = [];
-      const maxTop = 3; // Número máximo de top N a considerar
-
-      for (let i = 0; i < maxTop; i++) {
-        const topN = Object.keys(groupedByGenre).map((genre) => {
-          // Ordenar las películas por recaudación y seleccionar el top N
-          const sortedMovies = groupedByGenre[genre]
-            .sort(
-              (a, b) =>
-                parseInt(b.Gross.replace(/,/g, "")) -
-                parseInt(a.Gross.replace(/,/g, "")),
-            )
-            .slice(0, maxTop);
-
-          return {
-            name: genre,
-            data: sortedMovies[i]
-              ? parseFloat(sortedMovies[i].Gross.replace(/,/g, ""))
-              : 0, // Si no hay suficiente películas, poner 0
-          };
-        });
-
-        arraySeriesY.push({
-          name: `Top ${i + 1}`,
-          data: topN.map((item) => item.data),
-        });
+    // Agrupamos las recaudaciones por género
+    data.forEach((item) => {
+      const genre = item.primer_genero;
+      if (!groupedByGenre[genre]) {
+        groupedByGenre[genre] = [];
       }
+      groupedByGenre[genre].push(parseFloat(item.Gross));
+    });
 
-      const movieName = data.map((item) => item.Series_Title);
+    // Preparamos los datos para Highcharts.
+    const arraySeriesY = Array.from({ length: 3 }, (_, i) => ({
+      name: `Top ${i + 1}`,
+      data: xAxis.map((genre) => {
+        return groupedByGenre[genre][i];
+      }),
+    }));
 
-      crearChartBarrasRecaudacion(xAxis, arraySeriesY, movieName);
-    }
-  };
-
-  xmlhttp.open("GET", "database.php?grafico=recaudacion", true);
-  xmlhttp.send();
-}
+    crearChartBarrasRecaudacion(xAxis, arraySeriesY, movieName);
+  });
 
 function crearChartBarrasDecada(xAxis, yAxis) {
   Highcharts.chart("grafico1", {
@@ -229,7 +189,3 @@ function crearChartBarrasRecaudacion(xAxis, arraySeriesY, moviesName) {
     },
   });
 }
-
-graficoporDecada();
-graficoGeneros();
-graficoRecaudacion();
