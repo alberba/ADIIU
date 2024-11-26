@@ -46,6 +46,10 @@ function crearChartBarrasDecada(xAxis, yAxis) {
     chart: {
       type: "column",
     },
+    accessibility: {
+      description:
+        "La siguiente gráfica muestra el número de películas del Top 1000 de IMDB por decadas. Como podemos observar, vemos que la mayoría de peliculas son de la decada de los 2000 hacia adelante",
+    },
     title: {
       text: "Nº Peliculas por decada",
     },
@@ -108,6 +112,10 @@ function crearChartPie(data) {
     chart: {
       type: "pie",
     },
+    accessibility: {
+      description:
+        "La siguiente gráfica muestra el porcentaje de películas que hay por género en el Top 1000 de IMDB. Las películas de drama, acción y comedia suponen mas de la mitad de las películas",
+    },
     title: {
       text: "Porcentaje de películas por género",
     },
@@ -140,6 +148,10 @@ function crearChartBarrasRecaudacion(xAxis, arraySeriesY, moviesName) {
   Highcharts.chart("grafico3", {
     chart: {
       type: "bar",
+    },
+    accessibility: {
+      description:
+        "La siguiente gráfica muestra las 3 películas con mayor recaudación por género. Podemos observar que las películas de acción son las más taquilleras",
     },
     title: {
       text: "Top 3 de películas con mayor recaudación por género",
