@@ -6,6 +6,10 @@
 
 Este proyecto es un dashboard interactivo diseñado para visualizar y analizar datos de películas del conjunto de datos de IMDb Top 1000. Incluye gráficos dinámicos, búsquedas de películas específicas a través de la API de TMDB y visualizaciones generadas a partir de datos almacenados en una base de datos MySQL.
 
+## Setup
+
+Para hacer poder interactuar con la página web, deberá descargar el repositorio e introducirlo en la carpeta */htdocs* de xampp. Además deberá importar la base de datos a partir del archivo sql.
+
 ## Data Set
 
 El dataset de IMDb Top 1000 contiene información sobre las 1000 películas mejor valoradas según [IMDb](https://www.imdb.com/). A partir de la base de datos, utilizamos estas variables:
