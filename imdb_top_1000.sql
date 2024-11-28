@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `csv_db 6`
 --
-
+CREATE DATABASE IF NOT EXISTS `csv_db 6` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `csv_db 6`;
 -- --------------------------------------------------------
 
 --
