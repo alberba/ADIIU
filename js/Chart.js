@@ -1,7 +1,9 @@
 fetch("database.php?grafico=decadas")
   .then((response) => response.json())
   .then((data) => {
+    // Convertir los datos a un formato que Highcharts pueda entender
     const decades = data.map((item) => item.decade);
+    // Hemos de convertir los valores de movie_count a números
     const movie_count = data.map((item) => parseInt(item.movie_count));
 
     crearChartBarrasDecada(decades, movie_count);
@@ -101,7 +103,7 @@ function crearChartPie(data) {
   // Calcular el total de todas las cantidades
   const total = data.reduce((sum, item) => sum + parseInt(item.cantidad), 0);
 
-  // Convertir las cantidades a porcentajes
+  // Convertir las cantidades a porcentajes ya que asi es como lo entiende Highcharts
   const pieData = data.map((item) => ({
     name: item.primer_genero,
     y: parseInt(item.cantidad),
