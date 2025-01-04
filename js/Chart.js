@@ -50,10 +50,13 @@ function crearChartBarrasDecada(xAxis, yAxis) {
     },
     accessibility: {
       description:
-        "La siguiente gráfica muestra el número de películas del Top 1000 de IMDB por decadas. Como podemos observar, vemos que la mayoría de peliculas son de la decada de los 2000 hacia adelante",
+        "The following chart shows the number of movies from the IMDB Top 1000 by decade. As we can observe, most of the movies are from the 2000s onward.",
+    },
+    caption: {
+      text: "A bar chart showing the number of movies from the IMDB Top 500 by decade.",
     },
     title: {
-      text: "Nº Peliculas por decada",
+      text: "Nº Movies by Decade",
     },
     subtitle: {
       text: "",
@@ -73,7 +76,7 @@ function crearChartBarrasDecada(xAxis, yAxis) {
       headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
       pointFormat:
         '<tr><td style="color:{series.color};padding:0"></td>' +
-        '<td style="padding:0"><b>{point.y:.0f} películas</b></td></tr>',
+        '<td style="padding:0"><b>{point.y:.0f} movies</b></td></tr>',
       footerFormat: "</table>",
       shared: true,
       useHTML: true,
@@ -88,7 +91,7 @@ function crearChartBarrasDecada(xAxis, yAxis) {
     },
     series: [
       {
-        name: "Películas",
+        name: "Movies",
         colorByPoint: true,
         data: yAxis,
       },
@@ -116,10 +119,13 @@ function crearChartPie(data) {
     },
     accessibility: {
       description:
-        "La siguiente gráfica muestra el porcentaje de películas que hay por género en el Top 1000 de IMDB. Las películas de drama, acción y comedia suponen mas de la mitad de las películas",
+        "The following chart shows the percentage of movies from the IMDB Top 1000 by genre. As we can observe, the most common genre is Drama.",
+    },
+    caption: {
+      text: "A pie chart showing the percentage of movies from the IMDB Top 1000 by genre.",
     },
     title: {
-      text: "Porcentaje de películas por género",
+      text: "Movies by Genre",
     },
     plotOptions: {
       series: {
@@ -138,7 +144,7 @@ function crearChartPie(data) {
     },
     series: [
       {
-        name: "Cantidad",
+        name: "Amount",
         colorByPoint: true,
         data: pieData,
       },
@@ -153,10 +159,13 @@ function crearChartBarrasRecaudacion(xAxis, arraySeriesY, moviesName) {
     },
     accessibility: {
       description:
-        "La siguiente gráfica muestra las 3 películas con mayor recaudación por género. Podemos observar que las películas de acción son las más taquilleras",
+        "The following chart displays the top 3 highest-grossing movies by genre. As we can observe, action movies are the highest-grossing.",
     },
     title: {
-      text: "Top 3 de películas con mayor recaudación por género",
+      text: "Top 3 Movies by Grossing",
+    },
+    caption: {
+      text: "A bar chart showing the top 3 highest-grossing movies by genre.",
     },
     subtitle: {
       text: "",

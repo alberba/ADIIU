@@ -4,11 +4,11 @@
 
 #### Autores: Ramiro Martins y Albert Salom
 
-Este proyecto es un dashboard interactivo diseñado para visualizar y analizar datos de películas del conjunto de datos de IMDb Top 1000. Incluye gráficos dinámicos, búsquedas de películas específicas a través de la API de TMDB y visualizaciones generadas a partir de datos almacenados en una base de datos MySQL.
+Este proyecto es un dashboard interactivo diseñado para visualizar y analizar datos de películas del conjunto de datos de IMDb Top 1000. Incluye gráficos dinámicos, búsquedas de películas específicas a través de la API de TMDB, vídeo destacado de una crítica de una película y visualizaciones generadas a partir de datos almacenados en una base de datos MySQL.
 
 ## Setup
 
-Para hacer poder interactuar con la página web, deberá descargar el repositorio e introducirlo en la carpeta */htdocs* de xampp. Además deberá importar la base de datos a partir del archivo sql.
+Para hacer poder interactuar con la página web, deberá descargar el repositorio e introducirlo en la carpeta _/htdocs_ de xampp. Además deberá importar la base de datos a partir del archivo sql.
 
 ## Data Set
 
@@ -66,9 +66,18 @@ Contiene todos los datos para la creación de la base de datos y la inserción d
 
 ## Accesibilidad
 
-El dashboard es accesible para cualquier usuario, ya que hemos implementado un diseño responsivo y adaptado a cualquier dispositivo.
+Nuestro proyecto sigue las pautas de accesibilidad WAI-AA para asegurar que sea accesible para la mayoría de los usuarios, incluyendo aquellos con discapacidades. Hemos implementado varias medidas para cumplir con estas pautas y proporcionar una experiencia inclusiva para todos los usuarios.
 
-Por otro lado, el html cuenta con una gran semántica y estructura, que junto con los gráficos Highchart que están preparados para ser accesibles, facilita la navegación a través de lectores de pantalla.
+Algunas de las medidas que hemos implementado incluyen:
+
+- **Etiquetas ARIA**: Hemos añadido etiquetas ARIA a los elementos interactivos para mejorar la navegación y comprensión del contenido para usuarios de lectores de pantalla.
+- **Contraste de colores**: Nos hemos asegurado de que el contraste de colores entre el texto y el fondo sea suficiente para ser legible para usuarios con baja visión.
+- **Navegación por teclado**: Todos los elementos interactivos pueden ser accedidos y utilizados mediante el teclado, facilitando la navegación para usuarios que no pueden usar un ratón.
+- **Tamaños de fuente ajustables**: Los usuarios pueden ajustar el tamaño de la fuente utilizando los controles de tamaño de texto proporcionados en la interfaz.
+- **Descripciones de gráficos**: Cada gráfico incluye una descripción accesible que explica su contenido y propósito, asegurando que la información visual también sea accesible para usuarios con discapacidades visuales.
+- **Formularios accesibles**: Los formularios de búsqueda y otros elementos interactivos están diseñados para ser accesibles, con etiquetas claras y descripciones que facilitan su uso.
+
+Estas medidas nos ayudan a cumplir con las pautas de accesibilidad WAI-AA y a proporcionar una experiencia inclusiva para todos los usuarios.
 
 ## Créditos
 

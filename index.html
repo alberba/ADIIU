@@ -11,6 +11,8 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="./js/Chart.js"></script>
     <script src="./js/api.js"></script>
+    <script src="./js/accesibility.js"></script>
+    <link rel="stylesheet" href="index.css" />
     <title>IMDB Data Dashboard</title>
   </head>
   <body class="bg-gray-200">
@@ -19,7 +21,7 @@
         class="mx-auto flex max-w-screen-xl items-center justify-between px-12 py-4 lg:px-6"
       >
         <a
-          class="text-2xl font-semibold text-white transition duration-300 hover:text-gray-200"
+          class="text-2xl font-semibold text-white transition duration-300 hover:text-gray-300"
           href="#"
           >IMDB Data Dashboard</a
         >
@@ -27,14 +29,35 @@
         <div class="flex gap-6 text-white">
           <a
             href="https://www.uib.cat/"
-            class="transition duration-300 hover:text-gray-200"
+            class="font-bold text-white transition duration-300 hover:text-gray-900"
+            aria-label="Link to UIB website"
             >UIB</a
           >
           <a
             href="https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows"
-            class="transition duration-300 hover:text-gray-200"
+            class="font-bold text-white transition duration-300 hover:text-gray-900"
+            aria-label="Link to data source"
             >Data Source</a
           >
+        </div>
+        <div
+          class="text-size-controls font- fixed right-0 top-0 m-3 flex w-28 justify-between rounded-lg border border-gray-300 bg-white p-2 text-lg"
+        >
+          <button
+            onclick="changeSize('increase')"
+            aria-label="Increase text size"
+          >
+            A+
+          </button>
+          <button onclick="changeSize('reset')" aria-label="Reset text size">
+            A
+          </button>
+          <button
+            onclick="changeSize('decrease')"
+            aria-label="Decrease text size"
+          >
+            A-
+          </button>
         </div>
       </nav>
     </header>
@@ -43,13 +66,15 @@
       <div class="col-span-10 mt-4 grid grid-cols-5 gap-6 lg:grid-cols-10">
         <figure
           id="grafico1"
-          class="col-span-5 aspect-[15/13] rounded border border-gray-400 bg-white p-3"
+          class="col-span-5 aspect-[15/13] rounded border border-gray-400 bg-white p-3 text-black"
+          role="img"
         ></figure>
         <figure
           id="chartPie"
-          class="col-span-5 aspect-[15/13] rounded border border-gray-400 bg-white p-3"
+          class="col-span-5 aspect-[15/13] rounded border border-gray-400 bg-white p-3 text-black"
+          role="img"
         ></figure>
-        <section
+        <div
           class="col-span-5 flex aspect-[15/13] flex-col overflow-hidden text-ellipsis rounded border border-gray-400 bg-white px-4"
         >
           <form class="my-5" onsubmit="buscarPelicula(event)">
@@ -73,31 +98,34 @@
                   />
                 </svg>
               </div>
+              <label for="nombre_pelicula" class="sr-only">Search movie:</label>
               <input
                 type="search"
                 id="nombre_pelicula"
-                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-                placeholder="Buscar película"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900"
+                placeholder="Search movie"
+                title="Search movie"
                 required
+                oninvalid="{
+                  this.setCustomValidity('Obligatory field')
+                  this.classList.add('invalid-input')
+                  this.classList.remove('valid-input')}"
+                oninput="{
+                  this.setCustomValidity('')
+                  this.classList.remove('invalid-input')
+                  this.classList.add('valid-input')}"
               />
               <button
                 type="submit"
-                class="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                class="absolute bottom-2.5 end-2.5 rounded-lg bg-blue-700 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-500"
               >
-                Buscar
+                Search
               </button>
             </div>
           </form>
 
           <article class="flex h-auto flex-col items-center lg:block">
-            <img
-              src=""
-              alt=""
-              class="float-left mr-4 h-auto w-1/5 max-w-44 object-contain lg:w-1/3 lg:max-w-32"
-              id="img_pelicula"
-            />
             <div class="my-3 flex flex-col items-center lg:my-0 lg:block">
-              <h3 id="titulo_pelicula" class="text-xl font-bold"></h3>
               <p id="pelicula_year" class="text-lg"></p>
               <p
                 id="descripcion_pelicula"
@@ -105,16 +133,25 @@
               ></p>
             </div>
           </article>
-        </section>
+        </div>
         <figure
           class="col-span-5 aspect-[15/13] rounded border border-gray-400 bg-white p-3"
           id="grafico3"
         ></figure>
+        <iframe
+          height="580"
+          src="https://www.youtube.com/embed/1J9d8Zx_JFE?cc_load_policy=1"
+          title="La HISTORIA de un FALSO PROFETA | Dune 1 y 2 | Relato y Reflexiones"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          class="aspect-[15/13] justify-center rounded border border-gray-400 bg-white p-3"
+          role="document"
+        ></iframe>
       </div>
 
       <aside class="col-span-10 flex justify-center pt-8 lg:col-span-2 lg:pt-3">
         <a href="https://github.com/alberba/ADIIU" class="h-fit max-w-[150px]">
-          <img src="./img/github-logo.svg" alt="Logo de Github" />
+          <img src="./img/github-logo.svg" alt="Link to GitHub repository" />
         </a>
       </aside>
     </main>
